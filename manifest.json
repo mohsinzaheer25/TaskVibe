@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Task Manager",
+  "name": "Task Vibe",
   "version": "2.2.1",
   "description": "Manage your tasks with regular reminders",
   "permissions": ["storage", "alarms", "windows"],
@@ -11,7 +11,7 @@
       "48": "icon48.png",
       "128": "icon128.png"
     },
-    "default_title": "Task Manager",
+    "default_title": "Task Vibe",
     "default_popup": "popup.html"
   },
   "background": {
