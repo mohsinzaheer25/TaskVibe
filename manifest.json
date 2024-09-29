@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Task Manager",
+  "version": "2.1.1",
+  "description": "Manage your tasks with regular reminders",
+  "permissions": ["storage", "alarms", "windows"],
+  "host_permissions": [],
+  "action": {
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    },
+    "default_title": "Task Manager",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "web_accessible_resources": [{
+    "resources": ["styles.css", "theme.js"],
+    "matches": ["<all_urls>"]
+  }]
+}
