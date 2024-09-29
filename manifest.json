@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Task Manager",
-  "version": "2.1.1",
+  "version": "2.2.1",
   "description": "Manage your tasks with regular reminders",
   "permissions": ["storage", "alarms", "windows"],
   "host_permissions": [],
@@ -26,7 +26,7 @@
     "extension_pages": "script-src 'self'; object-src 'self'"
   },
   "web_accessible_resources": [{
-    "resources": ["styles.css", "theme.js"],
+    "resources": ["styles.css", "theme.js", "allTasks.html"],
     "matches": ["<all_urls>"]
   }]
 }

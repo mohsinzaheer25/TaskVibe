@@ -6,8 +6,8 @@ function openPopup() {
     });
 }
 
-// Open popup every 2 minutes
-chrome.alarms.create('openPopup', { periodInMinutes: 2 });
+// Open popup every 15 minutes
+chrome.alarms.create('openPopup', { periodInMinutes: 15 });
 
 chrome.alarms.onAlarm.addListener((alarm) => {
     if (alarm.name === 'openPopup') {

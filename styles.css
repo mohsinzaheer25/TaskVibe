@@ -202,3 +202,112 @@ button:hover {
     background-color: var(--primary-color);
     color: white;
 }
+
+/*All Tasks */
+
+#loadMore {
+    display: block;
+    margin: 20px auto 0;
+    padding: 8px 16px;
+    font-size: 14px;
+    background: linear-gradient(to bottom right, var(--primary-color), var(--primary-hover-color));
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#loadMore:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+/* Adjust the existing styles for better spacing */
+#taskList {
+    max-height: none;
+    margin-bottom: 20px;
+}
+
+.task:last-child {
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Add these new styles */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    min-width: 30vw;
+    padding: 20px;
+}
+
+.card {
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Update existing styles */
+body {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* All Tasks specific styles */
+#allTasksList {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+#allTasksList .task {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#allTasksList .task:last-child {
+    border-bottom: none;
+}
+
+#allTasksList .task input[type="checkbox"] {
+    margin-right: 12px;
+    accent-color: var(--primary-color);
+}
+
+#allTasksList .task-text {
+    flex-grow: 1;
+    font-size: 14px;
+}
+
+#allTasksList .edit-input {
+    flex-grow: 1;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 14px;
+    margin-right: 10px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+#allTasksList .edit-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 12px;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+#allTasksList .edit-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}

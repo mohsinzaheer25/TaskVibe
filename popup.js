@@ -3,6 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const addTaskButton = document.getElementById('addTask');
     const taskList = document.getElementById('taskList');
     const emptyMessage = document.getElementById('emptyMessage');
+    const loadMoreButton = document.createElement('button');
+    loadMoreButton.id = 'loadMore';
+    loadMoreButton.textContent = 'Load More';
+    loadMoreButton.style.display = 'none';
 
     // Load tasks immediately
     loadTasks();
@@ -41,6 +45,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Load More button click event
+    loadMoreButton.addEventListener('click', function() {
+        chrome.tabs.create({ url: 'allTasks.html' });
+    });
+
     function loadTasks() {
         chrome.storage.local.get(['tasks'], function(result) {
             const tasks = result.tasks || [];
@@ -53,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (taskText) {
             chrome.storage.local.get(['tasks'], function(result) {
                 const tasks = result.tasks || [];
-                tasks.push({ text: taskText, completed: false });
+                tasks.unshift({ text: taskText, completed: false });
                 chrome.storage.local.set({ tasks: tasks }, function() {
                     renderTasks(tasks);
                     newTaskInput.value = '';
@@ -119,9 +128,11 @@ document.addEventListener('DOMContentLoaded', function() {
         taskList.innerHTML = '';
         if (tasks.length === 0) {
             emptyMessage.style.display = 'block';
+            loadMoreButton.style.display = 'none';
         } else {
             emptyMessage.style.display = 'none';
-            tasks.forEach((task, index) => {
+            const displayTasks = tasks.slice(0, 3);
+            displayTasks.forEach((task, index) => {
                 const taskElement = document.createElement('div');
                 taskElement.className = 'task';
                 taskElement.dataset.index = index;
@@ -133,6 +144,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 `;
                 taskList.appendChild(taskElement);
             });
+
+            if (tasks.length > 3) {
+                loadMoreButton.style.display = 'block';
+            } else {
+                loadMoreButton.style.display = 'none';
+            }
         }
+
+        // Ensure the Load More button is always at the bottom
+        taskList.parentNode.insertBefore(loadMoreButton, taskList.nextSibling);
     }
 });
